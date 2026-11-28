@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Presenter Notes | Ross Video Executive Readout</title>
+  <style>
+    :root{font-family:Segoe UI,Aptos,Arial,sans-serif;color:#1e252b;background:#f1f3f4}
+    *{box-sizing:border-box}
+    body{margin:0;line-height:1.55}
+    header{background:#202529;color:white;padding:17px clamp(16px,4vw,44px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    header strong{font-size:17px}
+    header small{display:block;color:#c5cdd1;letter-spacing:.7px;font-size:11px}
+    header a{color:white;text-decoration:none;border:1px solid #6b7479;border-radius:6px;padding:7px 12px;font-size:13px}
+    main{max-width:960px;margin:28px auto;padding:0 20px 40px}
+    .notice{background:#fff8eb;border:1px solid #f1dab1;padding:12px 16px;border-radius:7px;font-size:13px}
+    .panel{background:white;border:1px solid #dfe3e5;border-radius:10px;margin-top:18px;padding:25px}
+    .eyebrow{font-size:11px;color:#b31b2d;font-weight:800;letter-spacing:1.2px}
+    h1{font-size:clamp(24px,3vw,32px);line-height:1.2;margin:7px 0 12px}
+    h2{font-size:17px;margin:0 0 10px}
+    .talk{font-size:17px;white-space:pre-wrap;line-height:1.7;color:#24272b}
+    .prompt{color:#5e666c;font-size:13px;margin-top:17px}
+    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:16px}
+    select,textarea,button{font:inherit}
+    select{flex:1;min-width:220px;padding:11px;border:1px solid #cbd1d4;border-radius:6px;background:white}
+    button{background:#202326;color:white;border:0;border-radius:6px;padding:10px 14px;cursor:pointer}
+    button.secondary{background:white;color:#262c30;border:1px solid #cbd1d4}
+    button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #dd303e;outline-offset:2px}
+    textarea{display:block;width:100%;min-height:145px;resize:vertical;border:1px solid #cbd1d4;border-radius:7px;padding:13px;line-height:1.55}
+    .muted{font-size:13px;color:#5f686f}
+    .tag{background:#f0f8f3;color:#256341;font-size:12px;padding:4px 10px;border-radius:100px;display:inline-block}
+    .save-status{font-size:12px;color:#5a666b}
+    @media print{header,.notice,.controls,.private-form{display:none!important}body{background:white}.panel{border:none;margin:0;padding:0}}
+  </style>
+</head>
+<body>
+<header>
+  <div><strong>Ross Video · Presenter Notes</strong><small>Private presentation workspace · not part of the projected slides</small></div>
+  <a href="./index.html" target="_blank" rel="noopener">Open presentation ↗</a>
+</header>
+<main>
+  <div class="notice"><strong>For the presenter:</strong> Keep this window on your own screen or device; share only the presentation tab with the audience. The prepared talk tracks contain no private coaching comments. Anything you type below is saved only in this browser, not in GitHub or the report.</div>
+  <section class="panel">
+    <span class="eyebrow" id="sectionNumber">SECTION 01 / 14</span>
+    <h1 id="sectionTitle">Opening</h1>
+    <span class="tag">Spoken guidance · not displayed on slides</span>
+    <div class="controls">
+      <label for="sectionChoice" class="muted">Jump to section</label>
+      <select id="sectionChoice" aria-label="Choose presenter notes section"></select>
+      <button id="prev" class="secondary" type="button">← Previous</button>
+      <button id="next" class="secondary" type="button">Next →</button>
+    </div>
+    <h2 style="margin-top:26px">Suggested talk track</h2>
+    <div class="talk" id="talkTrack"></div>
+    <p class="prompt" id="deliveryTip"></p>
+  </section>
+  <section class="panel private-form">
+    <h2>My private presenter reminder</h2>
+    <p class="muted">Use this for personal reassurance or reminders before speaking. This field starts empty on purpose because the GitHub Pages presentation is public. Your entries are local to this browser and are never uploaded.</p>
+    <textarea id="privateNote" placeholder="Write a private reminder for this section…"></textarea>
+    <div class="controls">
+      <span class="save-status" id="saveStatus" role="status">Stored in this browser only.</span>
+      <button id="clearNote" class="secondary" type="button">Clear this section's reminder</button>
+    </div>
+  </section>
+</main>
+<script>
+"use strict";
+const sections = [
+  {id:"opening", title:"Opening", talk:"One finding surprised me enough to change how I framed this project. In the representative bug-fixing case, the engineering checks passed, but the particular sizing behaviour that changed still lacked effective automated regression coverage. That made me realize that the important question for Ross was not simply whether controls existed. It was whether those controls were sufficient for the specific AI-assisted activity.\n\nThat is the question I want to walk through today—and how the four project deliverables help Ross answer it repeatably.", tip:"Lead with the surprising finding, then pause. You do not need to say that the audience should be surprised. Let the evidence create the surprise."},
+  {id:"executive", title:"Executive summary", talk:"There are three points I want you to take away. A common readiness baseline is useful, but control presence alone is not adequacy. Different engineering activities create different validation and oversight needs. And a repeatable evidence-to-judgment-to-recommendation process helps us decide what to strengthen without inventing a universal AI-risk score.", tip:"Start with the conclusion; save methodology details for the questions."},
+  {id:"evolution", title:"How the question evolved", talk:"Initially I was asking which AI approaches were appropriate for different tasks. Ross's current engineering practices changed that starting point. Rather than assuming controls were missing, I needed a method to ask whether existing and proposed controls were sufficient in the context of each specific activity. That shift is the project's practical contribution.", tip:"Describe the evolution as learning from Ross, not as a criticism of its existing practices."},
+  {id:"deliverables", title:"Four deliverables", talk:"The four outputs form a decision sequence: describe the activity and its evidence, assess conditions through a qualitative rubric, connect the judgment to an appropriate recommendation, and reapply the assessment when circumstances change. The deliverables work together; the website is a demonstration of that reasoning, not a replacement for human assessment.", tip:"Trace one clear path rather than reading all four boxes verbatim."},
+  {id:"method", title:"Evidence and method", talk:"The literature synthesis was researcher-led: 40 retained studies, 83 analytical codes, 15 consolidated concepts, and six assessment groupings. KNIME supported structural comparisons and terminology checks; it did not automatically determine the groupings. Ross records and stakeholder clarification then grounded the method in representative engineering activity contexts.", tip:"If challenged on rigor, distinguish manual synthesis, supplementary analysis and formative evaluation."},
+  {id:"profiles", title:"Activity profiles", talk:"A1 is a bounded AI-assisted bug fix with an important regression-coverage gap. A2 is the Cloudbreak agent-supported development and testing pilot, not a production-wide standard. A3 is advisory AI code review; approval and merge remain human responsibilities. Each activity needs a different evidence and decision context even though all involve AI assistance.", tip:"Do not extrapolate from the selected cases to all Ross repositories."},
+  {id:"rubric", title:"Rubric results", talk:"The rubric does not reduce risk to a single score. It keeps evidence availability separate from the qualitative assessment of adequacy and control demands. Where permissions or case-specific approval documentation are incomplete, the method explicitly retains Unresolved rather than guessing.", tip:"Be ready to explain why Present evidence can still support an Intermediate or Unresolved assessment."},
+  {id:"discoveries", title:"Unexpected discoveries", talk:"This was the finding that surprised me most: the A1 checks passed, yet the specific changed behaviour lacked an effective automated regression guard. I did not interpret that as a failure of every Ross control. It showed why the scope and coverage of validation matter.\n\nA second surprise was how much the decision changes when an agent moves across several workflow stages, as in the Cloudbreak pilot. A third was that quick code-review feedback is not equivalent to verified finding accuracy, coverage, or end-to-end productivity gain.", tip:"Start with A1. The reaction you want is curiosity about coverage, not alarm that Ross has no controls."},
+  {id:"ontrack", title:"Are we on track?", talk:"Ross is already collecting relevant Whetstone inputs, such as reviewer-correctness telemetry and developer feedback. That is the right direction. The outstanding question is how to establish effectiveness across repositories, defect categories and change types, including missed issues and reviewer effort. Initial feedback speed should remain separate from overall pull-request cycle outcomes.", tip:"Acknowledge Ross's existing work before describing the evidence still needed."},
+  {id:"recommendations", title:"Recommended actions", talk:"The recommendations are activity-specific. For A1, strengthen regression assurance and document existing approval decisions. For A2, define conditions and enforced controls before any broader rollout. For A3, evaluate reviewer effectiveness before giving automated review stronger authority. These are evidence-informed recommendations, not claims of current Ross policy or completed implementation.", tip:"Tie each recommendation to one evidence limitation."},
+  {id:"reapply", title:"Reapplication guide", talk:"The method is designed for change. If a tool gains permissions, a repository changes, validation thresholds evolve, or new failure evidence appears, Ross can refresh the activity profile, reapply the rubric, update recommendations, and record the decision. The example is Cloudbreak progressing beyond the pilot—but that progression is hypothetical, not an announced rollout.", tip:"Describe the decision trigger, then the six-step loop."},
+  {id:"contribution", title:"The underlying contribution", talk:"The distinction I found most useful is between readiness, adequacy and effectiveness. Readiness asks whether expected mechanisms are present. Adequacy asks whether they address the specific demands of the activity. Effectiveness asks what evidence shows those mechanisms work over time. The method makes those questions explicit and repeatable.", tip:"This is your main intellectual contribution; say it slowly."},
+  {id:"close", title:"Executive close", talk:"The value for Ross is not another static score. It is a common way to make activity-specific control decisions, identify missing evidence and revisit judgments as engineering practices evolve.\n\nThe question I would leave with you is: which upcoming engineering decision would benefit most from applying this method next?", tip:"Invite engagement; you are sharing a method and its limitations, not defending a universal claim."},
+  {id:"technical", title:"Technical backup", talk:"Use this section only if the audience asks for additional methodological or evidence detail. Explain how the six groupings reflect the literature, why unresolved conditions remain, and where the supporting Ross exhibits and supplementary analyses are documented.", tip:"Do not feel obligated to present the backup section."}
+];
+const choice=document.getElementById("sectionChoice");
+const note=document.getElementById("privateNote");
+const keyPrefix="ross-readout-private-presenter-note-v1:";
+let current=0;
+sections.forEach((s,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=String(i+1).padStart(2,"0")+" · "+s.title;choice.append(o)});
+function safeRead(key){try{return localStorage.getItem(key)}catch{return null}}
+function safeWrite(key,value){try{localStorage.setItem(key,value);return true}catch{return false}}
+function display(i){
+  current=Math.max(0,Math.min(sections.length-1,i));
+  const s=sections[current];
+  document.getElementById("sectionNumber").textContent="SECTION "+String(current+1).padStart(2,"0")+" / "+sections.length;
+  document.getElementById("sectionTitle").textContent=s.title;
+  document.getElementById("talkTrack").textContent=s.talk;
+  document.getElementById("deliveryTip").textContent="Delivery cue: "+s.tip;
+  choice.value=String(current);
+  note.value=safeRead(keyPrefix+s.id)||"";
+  document.getElementById("prev").disabled=current===0;
+  document.getElementById("next").disabled=current===sections.length-1;
+  document.getElementById("saveStatus").textContent="Stored in this browser only.";
+}
+choice.addEventListener("change",()=>display(Number(choice.value)));
+document.getElementById("prev").addEventListener("click",()=>display(current-1));
+document.getElementById("next").addEventListener("click",()=>display(current+1));
+note.addEventListener("input",()=>{
+  const saved=safeWrite(keyPrefix+sections[current].id,note.value);
+  document.getElementById("saveStatus").textContent=saved?"Private reminder saved in this browser.":"Browser storage unavailable; copy your note elsewhere.";
+});
+document.getElementById("clearNote").addEventListener("click",()=>{note.value="";note.dispatchEvent(new Event("input"))});
+window.addEventListener("storage",event=>{
+  if(event.key==="ross-readout-active-section"&&event.newValue){
+    const i=sections.findIndex(s=>s.id===event.newValue);
+    if(i>=0)display(i);
+  }
+});
+const start=sections.findIndex(s=>s.id===safeRead("ross-readout-active-section"));
+display(start<0?0:start);
+</script>
+</body>
+</html>
